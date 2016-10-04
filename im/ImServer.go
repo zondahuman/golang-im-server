@@ -6,7 +6,7 @@ import (
 	"net"
 	"os"
 
-	"./im/handler"
+	"../im/handler"
 )
 
 func main() {
@@ -37,8 +37,9 @@ func handleConnection(conn net.Conn) {
 		}
 		Log(conn.RemoteAddr().String(), "receive data length:", n)
 		Log(conn.RemoteAddr().String(), "receive data:", buffer[:n])
-		Log(conn.RemoteAddr().String(), "receive data string:", string(buffer[:n]))
-		go handler.ProcessHandler(string(buffer[:n]))
+		var input = string(buffer[:n])
+		Log(conn.RemoteAddr().String(), "receive data string:", input)
+		go handler.ProcessHandler(input)
 	}
 }
 
