@@ -3,6 +3,7 @@
 *.iml
 *.log
 *.exe
+/*.exe
 
 target
 /target
