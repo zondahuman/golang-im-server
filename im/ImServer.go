@@ -40,6 +40,9 @@ func handleConnection(conn net.Conn) {
 		var input = string(buffer[:n])
 		Log(conn.RemoteAddr().String(), "receive data string:", input)
 		go handler.ProcessHandler(input)
+		var result = "receive success"
+		conn.Write([]byte(result))
+		conn.Close()
 	}
 }
 
